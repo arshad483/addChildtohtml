@@ -1,0 +1,90 @@
+<html>
+
+<body>
+<ul id="my-list">
+<li>jdfjas</li>
+</ul>
+
+<script>
+
+data = [
+  
+  {
+    date: 12/1/18,
+    values:[
+      {
+      one: 32,
+      two: 67,
+      three: 23
+      
+    }
+    ]
+  },
+  {
+    date: 14/1/18,
+    values:[{
+      one: 78,
+      two: 90,
+      three: 12
+    }]
+  }
+  
+]
+
+
+function createListItem(brand,text){
+	console.log(text);
+	var li=document.createElement('li');
+	li.setAttribute("id", brand);
+	li.textContent=text;
+	return li;
+};
+
+function appendChildren(parent,children){
+	children.forEach(function(child){
+		parent.appendChild(child);
+	});
+}
+var items;
+
+var myList=document.getElementById('my-list');
+
+data.forEach( (dataObj) => {
+  dataObj.values.forEach( (valuesObj,i) => {
+   // console.log(JSON.stringify(valuesObj));
+   for (let key in valuesObj){
+   	console.log(`${key} : ${valuesObj[key]}`)
+   	 items=[
+	createListItem(key,valuesObj[key])
+	
+];
+appendChildren(myList,items);
+
+   }
+
+/* items=[
+	createListItem(i,valuesObj.one),
+	createListItem(i,valuesObj.two),
+	createListItem(i,valuesObj.three)
+];*/
+
+
+});
+ // appendChildren(myList,items);
+});
+//console.log(items);
+
+
+/*var items=[
+	createListItem('vab'),
+	createListItem('blabal')
+	];*/
+
+/*items.forEach(function(li){
+	myList.appendChild(li);
+});*/
+
+</script>
+</body>
+
+</html>
